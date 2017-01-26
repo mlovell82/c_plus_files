@@ -1,2 +1,2 @@
-# c_plus_files
+# c_plus_plus_files
 a collection of my c++ files
