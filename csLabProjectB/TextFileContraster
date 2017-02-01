@@ -130,17 +130,6 @@ g> secondVector, int& line){
     }
 }
 
-/* 
-text from text.txt
-hello
-fiend
 
-text from text2.txt
-hello
-friend
-
-output when run on command line with executable file is
-text.txt: 2:  fiend
-text2.txt:  2:  friend
                  ^
 
