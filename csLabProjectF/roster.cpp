@@ -1,3 +1,4 @@
+// class roster manipulation using map
 // vector and list algorithms
 // Mikhail Nesterenko
 // 3/11/2014
