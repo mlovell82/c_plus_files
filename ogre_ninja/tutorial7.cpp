@@ -1,3 +1,5 @@
+// created a scen with the ogre3d game  engine
+
 /*
 -----------------------------------------------------------------------------
 Filename:    tutorial7.cpp
