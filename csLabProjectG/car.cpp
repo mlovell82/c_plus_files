@@ -1,3 +1,4 @@
+// one of a series of programs utilizing the factory design pattern
 // car class member functions
 // Mikhail Nesterenko
 // 3/15/2016
