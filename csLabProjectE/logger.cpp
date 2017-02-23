@@ -1,3 +1,5 @@
+// example use of singleton design pattern
+// logger loggs the string to a text file using one instance of the method
 // Created by Michael Lovell
 // 10/25/2016
 
