@@ -1,4 +1,4 @@
-// This file takes to text files and finds where they are first found to be different and reports the difference and line number
+// This file takes two text files and finds where they are first found to be different and reports the difference and line number
 // diff.cpp
 // cs44001
 // 8/31/2016
