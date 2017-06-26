@@ -1,0 +1,70 @@
+// performs 4 scientific calcutator operations
+// Lab4_Calculator
+// CS13001-005
+// Michael Lovell
+// 09/22/2015
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+
+using namespace std;
+
+int main(){
+	int mathchoice;
+	double operand;
+	double answer;
+
+	// selecting a calculator operation
+	cout << "1. Absolute Value" << endl;
+	cout << "2. Square root" << endl;
+	cout << "3. Ceiling" << endl;
+	cout << "4. Power" << endl;
+	cout << "Select an operation" << endl;
+	cin >> mathchoice;
+
+	// executing operation selected and looping back to another operation
+	while ((mathchoice == 1) || (mathchoice == 2) || (mathchoice == 3) || (mathchoice == 4)){
+
+		switch (mathchoice){
+		case 1:
+
+			cout << "Enter a number:" << endl;
+			cin >> operand;
+			answer = abs(operand);
+			cout << answer << endl;
+			cout << "Select an operation:" << endl;
+			cin >> mathchoice;
+			break;
+		case 2:
+
+			cout << "Enter a number:" << endl;
+			cin >> operand;
+			answer = sqrt(operand);
+			cout << answer << endl;
+			cout << "Select an operation:" << endl;
+			cin >> mathchoice;
+			break;
+		case 3:
+			cout << "Enter a number:" << endl;
+			cin >> operand;
+			answer = ceil(operand);
+			cout << answer << endl;
+			cout << "Select an operation:" << endl;
+			cin >> mathchoice;
+			break;
+		case 4:
+			double second_operand;
+			cout << "Enter base:" << endl;
+			cin >> operand;
+			cout << "Enter exponent:" << endl;
+			cin >> second_operand;
+			answer = pow(operand, second_operand);
+			cout << answer << endl;
+			cout << "Select an operation:" << endl;
+			cin >> mathchoice;
+			break;
+		default:
+			cout << endl;
+		}
+	}
