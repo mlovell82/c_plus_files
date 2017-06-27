@@ -1,0 +1,74 @@
+// This program asks user to input a string and then  prints out a string in 80 characters
+// Michael Lovell
+// CS
+// 10/26/2015
+
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
+
+
+
+using std::cout; using std::cin; using std::endl; using std::string;
+
+void punc(string& input, const int length);
+void get(string& input);
+void spaces(string& input, const int length);
+void output(string& input);
+
+int main(){
+	const int string_length = 80;
+	string entered_string;
+
+	get(entered_string);
+	
+	punc(entered_string, string_length);
+
+	spaces(entered_string, string_length);
+
+	output(entered_string);
+
+}
+ 
+
+void get(string& input){
+	cout << "Enter a string of characters.  Then hit enter when finished." << endl;
+	getline(cin, input);
+}
+
+void punc(string& input, const int length){
+	if (input.length() < length)
+		for (int i = 0; i < input.length(); i++)
+		{
+			if (input[i] == '.')
+				input.replace(i, 1, ". ");
+			if (input[i] == ',')
+				input.replace(i, 1, ", ");
+			if (input[i] == '!')
+				input.replace(i, 1, "! ");
+			if (input[i] == '?')
+				input.replace(i, 1, "? ");
+			if (input[i] == ';')
+				input.replace(i, 1, "; ");
+		}
+}
+
+void spaces(string& input, const int length){
+
+	for (int i = 0; i < input.length(); i++)
+	{
+			 
+		int a = i - 1;
+		int b = i - 2;
+		if (input.length() < length)
+			if ((input[i] == ' ') && (input[b] != '.') && (input[a] != '.'))
+				input.replace(i, 1, "  ");
+		
+	}
+}
+
+void output(string& input){
+	cout << input;
+	cout << input.length();
+}
