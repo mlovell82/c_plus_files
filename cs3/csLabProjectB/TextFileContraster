@@ -1,0 +1,135 @@
+// This file takes two text files and finds where they are first found to be different and reports the difference and line number
+// diff.cpp
+// cs44001
+// 8/31/2016
+// by Michael Lovell
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+ #include <vector>
+
+
+std::vector<std::string> fileToString(std::ifstream&, std::vector<std::string>&); // converts file data into comparable vector of strings variable
+int stringSize(std::string,std::string); // sets int to the length of the longest string for itteration use in "compareString()"
+void compareString(std::string,std::string,int&,bool&); // checks both strings for difference and assigns location of difference to an int
+void compareVector(std::vector<std::string>, std::vector<std::string>, int&); // checks both vectors for a difference in strings and finds the line number
+void carrotSpacer(std::string&,int); // creates spacer to place carrot in correct location in "diffPrint()
+void diffPrint1(std::string, std::string,int); // if strings are different, it prints out the first string
+void diffPrint2(std::string, std::string,int,std::string); // prints out the second string and a carrot under the location where difference occurs
+
+int main(int argc, char *argv[]){
+  std::ifstream file1(argv[1]);
+  if(!file1.is_open()){
+
+  }
+
+
+  std::vector<std::string> vectorOne;
+  vectorOne = fileToString(file1,vectorOne);
+  file1.close();
+
+  std::ifstream file2(argv[2]);
+  if(!file2.is_open()){
+    std::cout << "Unable to open file2";
+  }
+
+  std::vector<std::string> vectorTwo;
+  vectorTwo = fileToString(file2,vectorTwo);
+ 
+  file2.close();
+
+  int lineNumber = 0;
+  compareVector(vectorOne,vectorTwo,lineNumber);
+
+  std::string carrot;
+  bool same = true;
+  int counter = -1, longer;
+  if(lineNumber > 0){  // lineNumber = 0 means no difference exists
+    compareString(vectorOne[lineNumber - 1],vectorTwo[lineNumber - 1],counter,s\
+ame); // vector[0] is when line = 1, so [lineNumber -1] is used
+    if(!same){
+
+     carrotSpacer(carrot,counter);
+      diffPrint1(argv[1],vectorOne[lineNumber - 1],lineNumber);
+      diffPrint2(argv[2],vectorTwo[lineNumber -1], lineNumber, carrot);
+
+    }
+  }
+}
+
+int stringSize(std::string a,std::string b){
+  int longerString = 0;
+  if(a.size() > b.size()){
+
+      longerString = a.size();
+  } else {
+      longerString = b.size();
+  }
+    return longerString;
+}
+
+void compareString(std::string firstString, std::string secondString, int& plac\
+eOfDiff, bool& equal){
+  int longerString = stringSize(firstString,secondString);
+  for(int i = 0; i < longerString; ++i){
+    if(equal){
+
+      ++placeOfDiff;
+    }
+    if (firstString[i] != secondString[i]){
+      equal = false;
+    }
+  }
+}
+
+void carrotSpacer(std::string& carrotPlace,int placeOfDiff){
+    for(int i = 0; i < placeOfDiff; ++i)
+      carrotPlace.insert(i, " ");
+
+}
+
+void diffPrint1(std::string fileName, std::string diffString, int line){
+  std::cout << fileName << ":" << "\t" << line << ":" << "\t" << diffString << \
+std::endl;
+
+}
+
+void diffPrint2(std::string fileName, std::string diffString, int line, std::st\
+ring carrotSpace){
+  diffPrint1(fileName,diffString,line);
+  std::cout << "\t" << "\t" << "\t" << carrotSpace << "^" << std::endl;
+
+}
+
+std::vector<std::string> fileToString(std::ifstream& inFile, std::vector<std::s\
+tring>& returnString){
+  std::string tempString;
+  while(!inFile.eof()){
+    std::getline(inFile,tempString);
+    returnString.push_back(tempString);
+  }
+  return returnString;
+}
+
+void compareVector(std::vector<std::string> firstVector, std::vector<std::strin\
+g> secondVector, int& line){
+  int loopMax = 0;
+  if(firstVector.size() > secondVector.size())
+    loopMax = firstVector.size();
+  else
+    loopMax = secondVector.size();
+  bool found = false;
+  for(int i = 0; i < loopMax; ++i)
+    if(!found){
+      if(firstVector[i] != secondVector[i]){
+        found = true;
+        line = i + 1;
+      }
+    }
+}
+
+
+                 ^
+
