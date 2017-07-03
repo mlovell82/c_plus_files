@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" language="C++" filename="shapeI.cpp"><cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;iostream&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>"shape.hpp"</cpp:file></cpp:include>
+
+<function><type><name>void</name></type> <name><name>shape</name>::<name>draw</name></name><parameter_list>()</parameter_list><block>{
+  <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; "A shape" &lt;&lt; "at" &lt;&lt; <name>x</name> &lt;&lt; <name>y</name> &lt;&lt; <name><name>std</name>::<name>endl</name></name></expr>;</expr_stmt>
+}</block></function>
+
+<function><type><name>void</name></type> <name><name>shape</name>::<name>move</name></name><parameter_list>(<param><decl><type><name>int</name></type> <name>a</name></decl></param>, <param><decl><type><name>int</name></type> <name>b</name></decl></param>)</parameter_list><block>{
+  <expr_stmt><expr><name>x</name> = <name>a</name></expr>;</expr_stmt> <expr_stmt><expr><name>y</name> = <name>b</name></expr>;</expr_stmt>
+}</block></function>
+</unit>

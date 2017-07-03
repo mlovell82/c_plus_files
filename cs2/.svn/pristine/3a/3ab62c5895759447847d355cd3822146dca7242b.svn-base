@@ -1,0 +1,32 @@
+//
+//
+//
+//
+
+#include <iostream>
+#include "stack.hpp"
+#include "string.hpp"
+#include <cassert>
+
+int main(){
+
+  {
+    // Default test with int type
+    stack<int> one;
+    assert(one.tos == 0);
+  }
+
+  {
+    // Default test with String type
+    stack<String> one;
+    assert(one.tos == 0);
+  }
+
+  {
+    // Copy ccnstructor test
+
+
+  }
+
+  {
+    // 

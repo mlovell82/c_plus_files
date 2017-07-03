@@ -1,0 +1,37 @@
+// stack.hpp
+// Michael Lovell
+// 3/28/2016
+// cs23001
+//
+
+#include <iostream>
+
+#ifndef STACK_HPP
+#define STACK_HPP
+
+template<typename T>
+class node{
+public:
+  T data;
+  node<T> *next;
+  node():next(0){};
+  node(const T & x):data(x), next(0){};
+
+};
+
+template<typename T>
+class stack{
+public:
+  stack():tos(0){};
+  stack(const stack<T>&);
+  move(stack<T>&&);
+  ~stack();
+  void swap(stack<T>);
+  stack<T>& operator=(stack<T>);
+  T pop();
+  void push(const T&);
+private:
+  node<T> tos;
+};
+
+#endif

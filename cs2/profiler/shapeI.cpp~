@@ -1,0 +1,7 @@
+#include <iostream>
+
+void shape::draw(){
+  std::cout << "A shape" << "at" << x << y << std::endl;
+}
+
+void shape::move(int x, int y){

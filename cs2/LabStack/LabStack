@@ -1,0 +1,28 @@
+// Michael Lovell
+// 3/29/2016
+//
+//
+
+#include <iostream>
+
+#ifndef LABSTACK_HPP
+#define LABSTACK_HPP
+
+template<typename T>
+class stack{
+
+public:
+stack();
+stack(const stack<T>);
+~stack();
+move()
+operator=();
+operator=();
+swap();
+push();
+pop();
+private:
+
+};
+
+#endif

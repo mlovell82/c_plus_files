@@ -1,0 +1,24 @@
+/**
+ * Michael Lovell
+ * bigint.hpp
+ * cs23001
+ */
+
+# ifndef BIGINT_HPP
+# define BIGINT_HPP
+# include <iostream>
+const int size = 50;
+class bigint {
+public:
+  bigint(); //default constructor
+  bigint(int); //constructor with an integer parameter
+  bigint(const char[]); //constructor with a char array parameter
+  friend std::ostream& operator<<(std::ostream&, const bigint); //output operator
+  bool operator==(const bigint&)const;
+
+private:
+  
+  int bigint_array[size];
+  
+};
+# endif

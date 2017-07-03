@@ -1,0 +1,23 @@
+ 12:57:55 up 7 days, 13:45, 21 users,  load average: 0.03, 0.03, 0.05
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+hpeyravi pts/0    saturn.itl.cs.ke 12Jan16 40:59   0.11s  0.11s -bash
+pfarrell pts/1    cpe-74-141-13-91 Mon18   11:30m  0.34s  0.34s -bash
+pfarrell pts/2    cpe-74-141-13-91 Mon19   11:30m  0.10s  0.10s -bash
+rkeegan  pts/3    lab218.labs.cs.k 11:52   27.00s  0.26s  0.26s -bash
+ipogrebi pts/4    10.14.196.102    12:24    3.00s  0.24s  0.24s -bash
+sjahant  pts/5    lab210.labs.cs.k 12:24    3.00s  0.20s  0.20s -bash
+bsteige1 pts/6    lab204.labs.cs.k 12:24   11.00s  0.23s  0.23s -bash
+gander18 pts/7    lab221.labs.cs.k 12:24   11.00s  0.19s  0.19s -bash
+mlovell  pts/8    lab207.labs.cs.k 12:24    3.00s  0.20s  0.01s w
+bhollan5 pts/9    10.14.82.155     12:24    3.00s  0.39s  0.39s -bash
+mdecker6 pts/10   lab201.labs.cs.k 12:24   19.00s  0.51s  0.51s -bash
+ewebb13  pts/11   lab214.labs.cs.k 12:24    3.00s  0.31s  0.09s svn ci -m svn practice
+tmcintur pts/12   lab223.labs.cs.k 12:24   43.00s  0.20s  0.20s -bash
+jburns24 pts/13   lab220.labs.cs.k 12:24   59.00s  0.20s  0.20s -bash
+pthiese  pts/14   lab205.labs.cs.k 12:24   11.00s  0.23s  0.23s -bash
+ebause   pts/15   lab213.labs.cs.k 12:25    1:07   0.20s  0.20s -bash
+bswital1 pts/16   lab206.labs.cs.k 12:32   11.00s  0.21s  0.21s -bash
+xye7     pts/18   lab216.labs.cs.k 12:26    3.00s  0.16s  0.16s -bash
+delia    pts/19   lab222.labs.cs.k 12:25    3.00s  0.17s  0.17s -bash
+wreker   pts/20   lab212.labs.cs.k 12:26    3.00s  0.12s  0.12s -bash
+jsolling pts/21   10.14.76.110     12:27    3.00s  0.21s  0.21s -bash

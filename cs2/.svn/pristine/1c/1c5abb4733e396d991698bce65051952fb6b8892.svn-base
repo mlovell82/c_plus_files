@@ -1,0 +1,45 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cassert>
+#include <list>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include "ASTree.hpp"
+
+void foo(srcML);
+
+int main(){
+
+  {
+    
+    srcML tom;
+    
+    std::ifstream file("simple.cpp.xml");
+    if(!file){
+      std::cerr << "could not open file" << std::endl;
+      exit(1);
+    }
+    
+    
+    file >> tom;
+
+    //    std::cout << "this is copied srcML object" << std::endl;
+
+    //    foo(tom);
+    tom.fileHeader("profile main1_cpp(\"main1.cpp\");\n");
+    std::cout << "this is original srcML object" << std::endl;
+
+    //std::ofstream out;
+    std::cout << tom << std::endl;
+    
+  
+}
+
+
+}
+void foo(srcML dick){
+  std::ofstream out;
+  std::cout << dick << std::endl;
+}

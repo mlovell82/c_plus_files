@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" language="C++" filename="shape.cpp"><cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;iostream&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>"shape.hpp"</cpp:file></cpp:include>
+
+<function><type><name>int</name></type> <name>main</name><parameter_list>()</parameter_list><block>{
+  <decl_stmt><decl><type><name>shape</name></type> <name>a</name></decl>;</decl_stmt>
+  <expr_stmt><expr><call><name><name>a</name>.<name>move</name></name><argument_list>(<argument><expr>3</expr></argument>,<argument><expr>4</expr></argument>)</argument_list></call></expr>;</expr_stmt>
+  <expr_stmt><expr><call><name><name>a</name>.<name>draw</name></name><argument_list>()</argument_list></call></expr>;</expr_stmt>
+}</block></function>
+</unit>

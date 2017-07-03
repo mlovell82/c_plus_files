@@ -1,0 +1,9 @@
+
+exec: \
+compile
+        ./source
+
+compile: \
+bigint.hpp
+        clang++ bigint.hpp bigint.cpp -o source
+        touch compile

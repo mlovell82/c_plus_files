@@ -1,0 +1,133 @@
+//  String class test program
+//
+//  Tests: XXX
+//
+
+#include "string.hpp"
+#include <cassert>
+#include <iostream>
+
+//===========================================================================
+int main ()
+{
+  {
+    String str("abcdef");
+    String str2 = str.substr(2,4);
+    if(str2 == "cde")
+      std::cout << "substring test passed" << std::endl;
+  }
+
+  {
+    String str("abcdef");
+    int element = str.findstr(2, "ce");
+    if(element == 2)
+      std::cout << "findstring test passed" << std::endl;
+  }
+
+  {
+    String str("abcdef");
+    int element = str.findchar('c');
+    if (element == 2)
+      std::cout << "findchar test passed" << std::endl;
+  }
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+        String  str("abcd");
+
+        // TEST
+        char result = str[0];
+	str[1] = 'a';
+        // VERIFY
+        assert(str == "aacd");
+        assert(result == 'a');
+	if((result == 'a') && (str == "aacd"))
+	  std::cout << "subscript tests passed" << std::endl;
+    }
+    
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+        String  str("abcde");
+
+        // TEST
+        int result = str.length();
+
+        // VERIFY
+	
+        assert(result == 5);
+	if(result == 5)
+	  std::cout << "length test passed" << std::endl;
+    }
+    
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+        String  str("abcde");
+
+        // TEST
+        int result = str.capacity();
+
+        // VERIFY
+        assert(result == 1);
+	if(result == 1)
+	  std::cout << "capacity test passed" << std::endl;
+    }
+    /*    
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+        String  str("abcdef");
+	// TEST
+        String result = str.substr(1,3);
+
+        // VERIFY
+        assert(result == "bcd");
+    }
+        
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+        String  str("abcdef");
+	char finder[3] = {'c','d','\0'};
+        // TEST
+        int result = str.findstr(2,"finder");
+
+        // VERIFY
+	std::cout << result;
+        //assert(result == 1);
+    }
+    
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+        String  str("abcdef");
+
+        // TEST
+        int result = str.findchar('c');
+
+        // VERIFY
+        assert(result == 2);
+    }
+
+    {
+      //------------------------------------------------------
+      // SETUP FIXTURE
+
+      String  str('a');
+      char b = 'b';
+      for (int i = 0; i < 3; ++i)
+	str = str + b;
+      // TEST
+      int result = str.length();
+
+      // VERIFY
+      //      assert(result == 15);
+      std::cout << result;
+    }
+
+    // ADD ADDITIONAL TESTS AS NECESSARY
+    */    
+    std::cout << "Done testing XXX." << std::endl;
+}
+

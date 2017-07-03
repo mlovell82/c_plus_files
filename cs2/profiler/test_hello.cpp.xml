@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" language="C++" filename="test_hello.cpp"><cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;iostream&gt;</cpp:file></cpp:include>
+
+<function><type><name>int</name></type> <name>main</name><parameter_list>()</parameter_list><block>{
+  <for>for(<init><decl><type><name>int</name></type> <name>i</name> <init>= <expr>0</expr></init></decl>;</init> <condition><expr><name>i</name> &lt; 10</expr>;</condition> <incr><expr>++<name>i</name></expr></incr>)<block>{
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; "hello world" &lt;&lt; <name><name>std</name>::<name>endl</name></name></expr>;</expr_stmt>
+  }</block></for>
+  <return>return <expr>0</expr>;</return>
+}</block></function>
+</unit>

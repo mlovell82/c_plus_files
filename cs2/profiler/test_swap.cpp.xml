@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" language="C++" filename="test_swap.cpp"><cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;iostream&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;fstream&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;iomanip&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;cassert&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;list&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;vector&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;string&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;algorithm&gt;</cpp:file></cpp:include>
+<cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>"ASTree.hpp"</cpp:file></cpp:include>
+
+
+
+<function><type><name>int</name></type> <name>main</name><parameter_list>()</parameter_list><block>{
+
+  <block>{
+    
+    <decl_stmt><decl><type><name>srcML</name></type> <name>tom</name></decl>, <decl><type ref="prev"/><name>dick</name></decl>, <decl><type ref="prev"/><name>harry</name></decl>;</decl_stmt>
+    
+    <decl_stmt><decl><type><name><name>std</name>::<name>ifstream</name></name></type> <name>file</name><argument_list>(<argument><expr>"simple.cpp.xml"</expr></argument>)</argument_list></decl>;</decl_stmt>
+    <if>if<condition>(<expr>!<name>file</name></expr>)</condition><then><block>{
+      <expr_stmt><expr><name><name>std</name>::<name>cerr</name></name> &lt;&lt; "could not open file" &lt;&lt; <name><name>std</name>::<name>endl</name></name></expr>;</expr_stmt>
+      <expr_stmt><expr><call><name>exit</name><argument_list>(<argument><expr>1</expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block></then></if>
+    
+    
+    <expr_stmt><expr><name>file</name> &gt;&gt; <name>tom</name></expr>;</expr_stmt>
+
+    
+    <expr_stmt><expr><call><name><name>dick</name>.<name>swap</name></name><argument_list>(<argument><expr><name>tom</name></expr></argument>)</argument_list></call></expr>;</expr_stmt> <comment type="line">// empty.swap(full)</comment>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; "Swap 1"</expr>;</expr_stmt>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; <name>dick</name> &lt;&lt; <name><name>std</name>::<name>endl</name></name></expr>;</expr_stmt>
+    
+    <expr_stmt><expr><call><name><name>tom</name>.<name>swap</name></name><argument_list>(<argument><expr><name>harry</name></expr></argument>)</argument_list></call></expr>;</expr_stmt> <comment type="line">// empty.swap(empty)</comment>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; "Swap 2"</expr>;</expr_stmt>
+    
+    <comment type="line">//std::cout &lt;&lt; tom &lt;&lt; std::endl;</comment>
+
+    <comment type="line">//harry.swap(dick);</comment>
+    <comment type="line">//std::cout &lt;&lt; "Swap 3";</comment>
+    <comment type="line">//std::cout &lt;&lt; harry &lt;&lt; std::endl;</comment>
+  
+    <expr_stmt><expr><name>harry</name> = <name>dick</name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; "Equal 1"</expr>;</expr_stmt>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; <name>harry</name> &lt;&lt; <name><name>std</name>::<name>endl</name></name></expr>;</expr_stmt>
+    
+    <expr_stmt><expr><call><name><name>harry</name>.<name>swap</name></name><argument_list>(<argument><expr><name>dick</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    <expr_stmt><expr><call><name><name>dick</name>.<name>swap</name></name><argument_list>(<argument><expr><name>harry</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; "Swap 4"</expr>;</expr_stmt>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; <name>dick</name> &lt;&lt; <name><name>std</name>::<name>endl</name></name></expr>;</expr_stmt>
+
+    <comment type="line">//    harry = tom;</comment>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; "Equal 2"</expr>;</expr_stmt>
+    <comment type="line">//    std::cout &lt;&lt; harry &lt;&lt; std::endl;</comment>
+
+    <comment type="line">//tom = harry;</comment>
+    <comment type="line">//std::cout &lt;&lt; "Equal 3";</comment>
+    <comment type="line">//std::cout &lt;&lt; tom &lt;&lt; std::endl;</comment>
+
+    <expr_stmt><expr><name>tom</name> = <name>dick</name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; "Equal 4"</expr>;</expr_stmt>
+    <expr_stmt><expr><name><name>std</name>::<name>cout</name></name> &lt;&lt; <name>tom</name> &lt;&lt; <name><name>std</name>::<name>endl</name></name></expr>;</expr_stmt>
+  }</block>
+}</block></function>
+</unit>

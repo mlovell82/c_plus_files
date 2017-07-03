@@ -1,0 +1,9 @@
+# ifndef BIGINT_HPP
+# define BIGINT_HPP
+
+class bigint {
+public:
+  bigint(); //default constructor
+  bigint(int); //constructor with an integer parameter
+  bigint(char[]); //constructor with a char array parameter
+  friend void output(std::cout); //output operator 

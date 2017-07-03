@@ -1,0 +1,11 @@
+#include <iostream>
+#include "LabStack.hpp"
+
+int main(){
+
+  stack one;
+  stack two;
+  one.push(3);
+  two.push(2);
+  std::cout << one.getTos();
+}

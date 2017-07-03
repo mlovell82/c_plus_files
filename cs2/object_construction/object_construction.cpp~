@@ -1,0 +1,19 @@
+// object_construction.cpp
+ 
+#include "object_construction.hpp"
+#include <iostream>
+
+dynamicArray::dynamicArray() {std::cout << "default constructor";}
+
+
+dynamicArray::dynamicArray(int number){std::cout << "constructor";}
+
+dynamicArray::dynamicArray(const dynamicArray &number){std::cout << "copy constructor";}
+
+dynamicArray::~dynamicArray(){std::cout << "default constructor";}
+
+dynamicArray &dynamicArray::operator=(const dynamicArray &ob1){
+  std::cout << "overload operator";
+  ptr = ob1.ptr;
+ return *this;
+}

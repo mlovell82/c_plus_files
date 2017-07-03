@@ -1,0 +1,155 @@
+// stack.hpp
+// Michael Lovell
+// 3/28/2016
+// cs23001
+
+
+#include <iostream>
+#include <cassert>
+
+#ifndef STACK_HPP
+#define STACK_HPP
+
+// Node class used by stack class
+template<typename T>
+class node{
+public:
+  T data;
+  node<T> *next;
+  node():next(0){};
+  node(const T & x):data(x), next(0){};
+
+};
+
+template<typename T>
+class stack{
+public:
+  stack():tos(0){full = 0;};
+  stack(const stack<T>&);
+  stack(stack<T>&&);
+  ~stack();
+  void swap(stack<T>&);
+  stack<T>& operator=(const stack<T>&);
+  T pop();
+  void push(const T&);
+  T getTos()const;
+  bool empty()const {return (full == 0);}
+private:
+  node<T> *tos;
+  int full;
+};
+
+template<typename T>
+stack<T>::stack(const stack<T> & actual){
+  node<T> *temp = actual.tos, *bottom = 0;
+  tos = 0;
+  while(temp != 0){
+    if(tos == 0){
+      tos = new node<T>(temp -> data);
+      bottom = tos;
+    }
+    else
+      {
+        bottom -> next = new node<T>(temp -> data);
+        bottom = bottom -> next;
+      }
+    temp = temp -> next;
+  }
+}
+
+// Move Constructor
+// Requires:  a stack object
+// Ensures:  a copy of the object is constructed
+template<typename T>
+stack<T>::stack(stack<T>&& rhs){
+  tos->data = rhs.tos->data;
+  tos->next = rhs.tos->next;
+  rhs.tos->data = 0;
+  rhs.tos->next = 0;
+}
+ 
+// = operator overload
+// Requires: 2 stack objects
+// Ensures: the value of the left is equal to the value on the right
+template<typename T>
+stack<T>& stack<T>::operator=(const stack<T> &rhs){
+  if (tos == rhs.tos) return *this;
+  node<T> *temp;
+  while (tos != 0){
+    temp = tos;
+    tos = tos->next;
+    delete temp;
+  }
+  temp = rhs.tos;
+  while (temp != 0){
+    node<T> * bottom;
+    if (tos == 0){
+      tos = new node<T>(temp->data);
+      bottom = tos;
+    }
+    else{
+      bottom->next = new node<T>(temp->data);
+      bottom = bottom->next;
+    }
+    temp = temp->next;
+  }
+  return *this;
+}
+
+// Destructor
+// Requires:  A stack object going out of scope
+// Ensures:  all data is deleted and no memory is leaked
+template<typename T>
+stack<T>::~stack(){
+  while(tos != 0){
+    node<T> * temp = tos;
+    tos = tos->next;
+    delete temp;
+  }
+}
+
+// Pop() method
+// Requires:  A stack object
+// Ensures: Deletes node off the top of the stack
+template<typename T>
+T stack<T>::pop(){  
+  assert(!empty());
+  T result = tos->data;
+  node<T> * temp = tos;
+  tos = tos->next;
+  delete temp;
+  return result;
+}
+
+// Push() method
+// Requires: A stack object
+// Ensures: new node is added to the linked list
+template<typename T>
+void stack<T>::push(const T& x){
+  node<T>* temp = new node<T>(x);
+  temp->next = tos;
+  tos = temp;
+  ++full;
+}
+
+// Swap() method
+// Requires: 2 stack objects
+// Ensures: members of those objects are swapped with each other
+template<typename T>
+void stack<T>::swap(stack<T>& rhs){
+  node<T> *temp = tos;
+  tos = rhs.tos;
+  rhs.tos = temp;
+}
+
+// getTos method
+// Requires: a stack object
+// Ensures: tos data item returned
+template<typename T>
+T stack<T>::getTos()const{
+  
+  T result = tos->data;
+  return result;
+}
+
+#endif

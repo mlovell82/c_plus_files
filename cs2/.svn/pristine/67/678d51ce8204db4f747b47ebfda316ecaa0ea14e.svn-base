@@ -1,0 +1,129 @@
+
+
+//
+//
+// File:        logentry.cpp  
+//       
+// Version:     1.0
+// Date:        
+// Author:      
+//
+// Description: Class implementation for a log entry.
+//
+//
+
+////////////////////////////////////////////////////////////
+#include <iostream>
+#include <vector>
+
+#include "string.hpp" 
+#include "logentry.hpp"
+
+////////////////////////////////////////////////////////// 
+// REQUIRES: A String object  
+// ENSURES: Outputs a vector of elements of the String seperated by a space
+//
+LogEntry::LogEntry(String s) {
+    // ...
+    std::vector<String> vec = s.split(' ');
+    host = vec[0];
+    String temp = vec[3];
+    String yearString = temp.substr(9,12);
+    int yearNumb = 0;
+    for(int i = (yearString.length() - 1); i < 0; --i)
+      yearNumb = yearNumb + ((yearString[i] - '0') * 10^i);
+    date:Date(temp.substr(1,2), temp.substr(4,7), yearNumb);    
+    int tempHour = 0;
+    int tempMinute = 0;
+    int tempSecond = 0;
+    String timeTemp = temp.substr(14,21);    
+    tempHour = (timeTemp[1] - '0') + ((timeTemp[0] - '0') * 10);
+    tempMinute = (timeTemp[4] - '0') + ((timeTemp[3] - '0') * 10);
+    tempSecond = (timeTemp[7] - '0') + ((timeTemp[6] - '0') * 10);
+    time:Time(tempHour,tempMinute,tempSecond);
+    request = vec[5];
+    int byte = 0;
+    String byteString = vec[9];
+    for(int i = (byteString.length() - 1); i < 0; --i)
+      byte = byte + ((byteString[i] - '0') * 10^i); 
+    number_of_bytes = byte;
+}
+Date::Date(String paramDay, String paramMonth, int paramYear){
+  day = paramDay;
+  month = paramMonth;
+  year = paramYear;
+}
+
+Time::Time(int paramHour, int paramMinute, int paramSecond){
+  hour = paramHour;
+  minute = paramMinute;
+  second = paramSecond;
+}
+////////////////////////////////////////////////////////// 
+// REQUIRES:  File and an input stream
+// ENSURES: Creates a logentry object for each line
+//
+std::vector<LogEntry> parse(std::istream& in) {
+  std::vector<LogEntry> result;
+  int i = 0;  
+while(in != 0){   
+    String temp;
+    in >> temp; 
+    LogEntry tom(temp);
+    result.push_back(tom);
+    std::cout << result[i] << std::endl;
+    ++i;
+   
+ }
+return result;   
+}
+
+//
+//
+//
+std::ostream& operator<<(std::ostream &out, const LogEntry &tom){
+  out << tom.host << std::endl;
+  String tempDay = tom.date.getDay();
+   out << tempDay << std::endl;
+   String tempMonth = tom.date.getMonth();
+   out << tempMonth << std::endl;
+   int tempYear = tom.date.getYear();
+   out << tempYear << std::endl;
+   int tempHour = tom.time.getHour();
+   out << tempHour << std::endl;
+   int tempMinute = tom.time.getMinute();
+   out << tempMinute << std::endl;
+   int tempSecond = tom.time.getSecond();
+   out << tempSecond << std::endl;
+  out << tom.request << std::endl;
+  out << tom.status << std:: endl;
+  out << tom.number_of_bytes << std::endl;
+
+  return out;
+}
+/*
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+void output_all(std::ostream& out, const std::vector<LogEntry> &tom) {
+
+}
+
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+void by_host(std::ostream& out, const std::vector<LogEntry>&) {
+
+}
+
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+int byte_count(const std::vector<LogEntry> &) {
+    
+    return 0;
+}
+*/

@@ -1,0 +1,87 @@
+
+
+//
+//
+// File:        logentry.cpp  
+//       
+// Version:     1.0
+// Date:        
+// Author:      
+//
+// Description: Class implementation for a log entry.
+//
+//
+
+////////////////////////////////////////////////////////////
+#include <iostream>
+#include <vector>
+
+#include "string.hpp" 
+#include "logentry.hpp"
+
+////////////////////////////////////////////////////////// 
+// REQUIRES: A String object  
+// ENSURES: Outputs a vector of elements of the String seperated by a space
+//
+LogEntry::LogEntry(String s) {
+    // ...
+    std::vector<String> vec = s.split(' ');
+    //Host = vec[0];
+    //String temp = vec[3];
+    //Date = temp.substr(1,12);
+}
+
+////////////////////////////////////////////////////////// 
+// REQUIRES:  File and an input stream
+// ENSURES: Creates a logentry object for each line
+//
+std::vector<LogEntry> parse(std::istream& in) {
+  std::vector<LogEntry> result;
+  int i = 0;  
+while(in != 0){   
+    String temp;
+    in >> temp; 
+    LogEntry tom(temp);
+    result.push_back(tom);
+    std::cout << result[i] << std::endl;
+    ++i;
+   
+ }
+return result;   
+}
+
+//
+//
+//
+std::ostream& operator<<(std::ostream &out, const LogEntry &tom){
+  for(int i = 0; i < 10; ++i)
+    out << tom[i];
+  return out;
+}
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+void output_all(std::ostream& out, const std::vector<LogEntry> &tom) {
+  for(int i = 0; i < tom.size(); ++i){
+    out << tom[i] << std::endl;
+  }
+}
+/*
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+void by_host(std::ostream& out, const std::vector<LogEntry>&) {
+
+}
+
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+int byte_count(const std::vector<LogEntry> &) {
+    
+    return 0;
+}
+*/

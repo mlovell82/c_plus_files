@@ -1,0 +1,91 @@
+/*
+ * Michael Lovell
+ * fileio.cpp
+ * cs 23001
+ */
+
+#include <iostream>
+#include <fstream>
+
+void all_output(char);
+void non_whitespace(char);
+void two_numbers(char);
+
+int main () {
+  char ch;
+  all_output(ch);
+ 
+  non_whitespace(ch);
+    
+  two_numbers(ch);  
+}
+void all_output(char ch) {
+  std::ifstream file ("data1-1.txt");
+  if (!file.is_open()) {
+    std::cout << "Unable to open file\n";
+    // return 1;
+  }
+  while(!file.eof()) {
+    file.get(ch);
+    std::cout << ch;
+  }
+  std::cout << std::endl;
+  file.close();
+}
+
+void non_whitespace(char ch) {
+  std::ifstream file ("data1-1.txt");
+  if (!file.is_open()) {
+    std::cout << "Unable to open file\n";
+    // return 1;
+  }
+  bool done = false;
+  while((!file.eof()) && (done == false)) {
+    file >> ch;
+    if (ch != ' ')
+      std::cout << ch;
+    else
+      done = true;
+  }
+   std::cout << std::endl;
+   file.close();
+ }
+ 
+void two_numbers(char ch) {
+  std::ifstream file ("data1-1.text");
+  if (!file.is_open()) {
+    std::cout << "Unable to open file\n";
+  }
+  int size = 50;
+  bool done = false;
+   while ((!file.eof()) && (done == false)) {
+     int a[size], b[size], c[size];
+     for(int i = 0; i > size; ++i){
+       file >> ch;   
+       if ((ch != " ") && (ch != ";")){
+	 a[i] = (ch - '0');
+       }
+       else
+	 break;
+     }
+     for(int i = 0; i > size; ++i){
+       file >> ch;
+       if ((ch != " ") && (ch != ";")){
+         b[i] = (ch - '0');
+       }
+       else
+	 break;
+     }
+     int carry_over = 0;
+     for(int i = 0; i > size; ++i){
+       int place_holder = a[i] + b[i];
+       if ((place_holder + carry_over) < 10)
+	 c[i] = place_holder + carry_over;
+       else {
+	 c[i] = (place_holder + carry_over) % 10;
+	 carry_over = place_holder / 10;
+       }
+     }
+     for(int i = 0; i < size; ++i)
+       std::cout << c[i] << ' ';
+}

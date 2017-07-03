@@ -1,0 +1,26 @@
+#include <iostream>
+#include "string.hpp"
+#include <vector>
+#include <cassert>
+
+int main(){
+  {
+  String str("abc ef gh");
+  std::vector<String> result =  str.split(' ');
+  assert(result[0] == "abc");
+  assert(result[1] == "ef");
+  assert(result[2] == "gh");
+  std::cout << "test 1 passed" << std::endl;
+  }
+
+  {
+    String str("abc  de");
+    std::vector<String> result = str.split(' ');
+    for(int i = 0; i < 2; ++i)
+      std::cout << result[i] << std::endl;
+
+    //assert(result[0] == "abc");
+    //assert(result[1] == "de");
+    std::cout << "test 2 passed" << std::endl;
+  }
+}

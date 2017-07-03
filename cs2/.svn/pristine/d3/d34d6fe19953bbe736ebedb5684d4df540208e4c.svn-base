@@ -1,0 +1,111 @@
+
+
+//
+//
+// File:        logentry.cpp  
+//       
+// Version:     1.0
+// Date:        
+// Author:      
+//
+// Description: Class implementation for a log entry.
+//
+//
+
+////////////////////////////////////////////////////////////
+#include <iostream>
+#include <vector>
+
+#include "string.hpp" 
+#include "logentry.hpp"
+
+////////////////////////////////////////////////////////// 
+// REQUIRES: A String object  
+// ENSURES: Outputs a vector of elements of the String seperated by a space
+//
+LogEntry::LogEntry(String s) {
+    // ...
+    std::vector<String> vec = s.split(' ');
+    host = vec[0];
+    //    String temp = vec[3];
+    //    date.day = temp.substr(1,2);
+    //    date.month = temp.substr(4,7);
+    //    String yearString = temp.substr(9,12);
+    //    int yearNumb = 0;
+    //    for(int i = (yearString.length() - 1); i < 0; --i)
+    //      yearNumb = yearNumb + ((yearString[i] - '0') * 10^i);
+    //    date.year = yearNumb;    
+    //    int tempTime = 0;
+    //    String timeTemp = temp.substr(14,21);    
+    //    tempTime = (timeTemp[1] - '0') + ((timeTemp[0] - '0') * 10);
+    //    time.hour = tempTime;
+    //    tempTime = (timeTemp[4] - '0') + ((timeTemp[3] - '0') * 10);
+    //    time.minute = tempTime;
+    //    tempTime = (timeTemp[7] - '0') + ((timeTemp[6] - '0') * 10);
+    //    time.second = tempTime;
+    request = vec[5];
+    int byte = 0;
+    String byteString = vec[9];
+    for(int i = (byteString.length() - 1); i < 0; --i)
+      byte = byte + ((byteString[i] - '0') * 10^i); 
+    number_of_bytes = byte;
+}
+
+////////////////////////////////////////////////////////// 
+// REQUIRES:  File and an input stream
+// ENSURES: Creates a logentry object for each line
+//
+std::vector<LogEntry> parse(std::istream& in) {
+  std::vector<LogEntry> result;
+  int i = 0;  
+while(in != 0){   
+    String temp;
+    in >> temp; 
+    LogEntry tom(temp);
+    result.push_back(tom);
+    std::cout << result[i] << std::endl;
+    ++i;
+   
+ }
+return result;   
+}
+
+//
+//
+//
+std::ostream& operator<<(std::ostream &out, const LogEntry &tom){
+  out << tom.host << std::endl;
+  // out << tom.date << std::endl;
+  // out << tom.time << std::endl;
+  out << tom.request << std::endl;
+  out << tom.status << std:: endl;
+  out << tom.number_of_bytes << std::endl;
+
+  return out;
+}
+/*
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+void output_all(std::ostream& out, const std::vector<LogEntry> &tom) {
+
+}
+
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+void by_host(std::ostream& out, const std::vector<LogEntry>&) {
+
+}
+
+////////////////////////////////////////////////////////// 
+// REQUIRES:  
+// ENSURES: 
+//
+int byte_count(const std::vector<LogEntry> &) {
+    
+    return 0;
+}
+*/

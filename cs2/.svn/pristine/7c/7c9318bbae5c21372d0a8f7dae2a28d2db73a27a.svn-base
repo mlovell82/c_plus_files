@@ -1,0 +1,33 @@
+// Michael Lovell
+// cs23001 lab7
+
+#include<iostream>
+#include<string>
+#include<fstream>
+
+void getWord(std::ifstream & in, std::string &word){
+  in >> word;
+  }
+
+void getLine(std::ifstream & in, std::string &line){
+  in.getline(line);
+  }
+
+int main(int argc, char * argv[]){
+  
+std::ifstream file ("debugandiotestfile.txt");
+  string word;
+  while(!file.eof()){
+    file.getWord(file, word)
+
+    }
+  file.close();
+
+  std::ifstream file2 ("debugandiotestfile.txt");
+  string line;
+  while(!file2.eof()){
+    file2.getLine(file2, word);
+  }
+  file.close();
+
+}

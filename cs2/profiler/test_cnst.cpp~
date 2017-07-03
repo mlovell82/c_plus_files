@@ -1,0 +1,24 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cassert>
+#include <list>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include "ASTree.hpp"
+
+void foo(AST);
+
+int main(){
+
+  {
+  AST tom;
+  foo(tom);
+  }
+
+
+}
+void foo(AST dick){
+  std::cout << "copy constructor worked" << std::endl;
+}

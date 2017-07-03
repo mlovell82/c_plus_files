@@ -1,0 +1,126 @@
+
+// Michael Lovell
+// 3/29/2016
+//
+//
+
+#include <iostream>
+
+#ifndef LABSTACK_HPP
+#define LABSTACK_HPP
+
+template<typename T>
+class node{
+public:
+  T data;
+  node<T> *next;
+  node(): next(0){};
+  node(const T& x):data(x), next(0){};
+};
+
+template<typename T>
+class stack{
+
+public:
+  stack():tos(0){};
+  stack(const stack<T>&);
+  ~stack();
+  move(stack<T>&&);
+  stack<T>& operator=(stack<T>);
+  operator=();
+  void swap(stack<T>&);
+  void push(const T&);
+  T pop();
+  const T& top()const;
+private:
+  node<T> *tos;
+};
+
+
+
+template<typename T>
+stack::stack(const stack<T>& object){
+  node<T> *temp = object.tos;
+  node<T> *bottom = 0;
+  tos = 0;
+  while(temp != 0){
+    if(tos == 0){
+      tos = new node<T>(temp->data);
+      bottom = tos;
+    }
+    else
+      {
+	bottom->next = new node<T>(temp->data);
+	bottom = bottom->next;
+      }
+  temp = temp->next;
+  }
+}
+
+template<typename T>
+stack<T>::~stack(){
+  while(tos != 0){
+    tos = tos->next;
+    delete temp;
+  }
+}
+
+template<typename T>
+stack<T>::move(stack<T>&& rhs){
+  tos = rhs.tos;
+  rhs.tos = 0;
+}
+
+template<typename T>
+stack::stack<T>& operator=(const stack<T> & rhs){
+  if(tos == rhs.tos) return *this;
+  node<T> *temp;
+  while(tos != 0){
+    temp = tos;
+    tos = tos->next;
+    delete temp;
+}
+  temp = rhs.tos;
+  while(temp != 0){
+    node<T> * bottom;
+    if(tos == 0){
+      tos = new node<T> (temp->data);
+      bottom = tos;
+    }
+    else
+      {
+	bottom->next = new node<T>(temp->data);
+	bottom = bottom->next;
+      }
+    temp = temp->next;
+  }
+  return *this;
+}
+
+template<typename T>
+void stack<T>::swap(stack<T>& rhs){
+  node<T> *temp = tos;
+  tos = rhs.tos;
+  ths.tos = temp;
+}
+
+template<typename T>
+void stack<T>::push(const T& x){
+  node<T> *temp = new node<T>(x);
+  temp->next = tos;
+  tos = temp;
+}
+
+template<typename T>
+void stack<T>::pop(){
+  T result = tos->data;
+  node<T> *temp = tos;
+  tos = tos->next;
+  delete temp;
+  return result;
+}
+
+const T Stack<T>::& top()const{
+  return tos;
+}
+#endif

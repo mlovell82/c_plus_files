@@ -1,0 +1,118 @@
+//  String class test program
+//
+//  Tests: XXX
+//
+
+#include "string.hpp"
+#include <cassert>
+#include <iostream>
+
+//===========================================================================
+int main ()
+{
+  
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+
+        // TEST
+        String  str;
+
+        // VERIFY
+	std::cout << str;
+    }
+    
+  
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+
+        // TEST
+
+      String str2('a');
+
+
+        // VERIFY
+      std::cout << str2[0] << std::endl;
+      //              assert(str[0] == 'z');
+    }
+    
+        
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+
+        // TEST
+        String  str("xyz");
+
+        // VERIFY
+	//        assert(str == "xyz");
+	std::cout << str << std::endl;
+    }
+    
+    
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+
+        // TEST
+        String  str("abcdefghijklmnopqrstuvwxyz");
+
+        // VERIFY
+	//        assert(str == "abcdefghijklmnopqrstuvwxyz");
+	std::cout << str << std::endl;
+    }
+    
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+
+        // TEST
+      String  str(5,"abcd");
+
+        // VERIFY
+	// assert(str == "123456789");
+
+    std::cout << str << std::endl;
+    }
+    
+    {
+      // TEST
+      String str(5);
+      std::cout << str << std::endl;
+    }
+    
+    {
+      //TEST
+      String str("abc");
+      String str2(str);
+      std::cout << str2 << std::endl;
+    }
+    
+  {
+    String str("abc");
+    //    str.~String();
+    std::cout << str << std::endl;
+  }  
+
+  {
+    String str("abc");
+    String str2("abc");
+    String str3("def");
+    str = str2;
+    std::cout << str << std::endl;
+    str = str3;
+    std::cout << str << std::endl;
+    std::cout << "assignment op passed" << std::endl;
+  }
+  {
+    String str("abc");
+    String str2("def");
+    str.swap(str2);
+    std::cout << str << str2 << std::endl;
+  }
+// ADD ADDITIONAL TESTS AS NECESSARY
+    std::cout << "Done testing XXX." << std::endl;
+    
+    
+}

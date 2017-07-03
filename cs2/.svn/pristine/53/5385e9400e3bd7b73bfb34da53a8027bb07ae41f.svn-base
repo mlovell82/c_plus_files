@@ -1,0 +1,43 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cassert>
+#include <list>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include "ASTree.hpp"
+
+void foo(srcML);
+
+int main(){
+
+  {
+    //AST tom;
+    srcML tom;
+    std::ifstream file("simple.cpp");
+    if(!file){
+      std::cerr << "could not open file" << std::endl;
+      exit(1);
+    }
+    foo(tom);
+    file >> tom;
+    std::ofstream out;
+    out << tom;
+  
+  
+}
+
+
+}
+void foo(srcML dick){
+  std::ifstream file("simple.cpp");
+  if(!file){
+    std::cerr << "could not open file" << std::endl;
+    exit(1);
+  }
+
+  std::ofstream out;
+  file >> dick;
+  out << dick;
+}

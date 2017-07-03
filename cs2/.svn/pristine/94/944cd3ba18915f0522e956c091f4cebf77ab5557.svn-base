@@ -1,0 +1,24 @@
+/**
+ * Michael Lovell
+ * bigint.cpp
+ * CS23001
+ */
+// This program implements an abstract data type for large integers
+
+# include <oistream>
+
+class bigint {
+public:
+  bigint();
+  bigint(int);
+  bigint(char[]);
+  friend bigint_stream(int[], stream );
+  bool bigint_compare(int[], int[]);
+private:
+  const int max_size;
+  int size;
+  int bigint[size];
+};
+
+int main(){
+

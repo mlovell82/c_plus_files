@@ -1,0 +1,13 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cassert>
+#include <list>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+int main(){
+
+AST tom(3);
+S

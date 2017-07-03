@@ -1,0 +1,36 @@
+// Michael Lovell
+// Recursion practice
+// March 8, 2016
+
+#include <iostream>
+
+int fibonacci(int);
+int fibonacci_tail(int,int,int);
+
+int main(){
+  int number = 10;
+
+ for(int i = 0; i <= number; ++i)
+  std::cout << fibonacci(i) << ", ";
+
+ std::cout << std::endl;
+
+  int total =0;
+  for (int n = 0; n <= number; ++n){
+    std::cout <<  fibonacci_tail((total), (n), (n-1)) << ", ";    
+    //std::cout << total << ", ";
+  }
+}
+
+int fibonacci(int number){
+  if(number < 2)
+    return  number;
+  else
+    return fibonacci(number - 1) + fibonacci(number - 2);
+}
+
+int fibonacci_tail(int total, int number, int last_total){
+  if(number < 2)
+    return total = number;
+  return total = fibonacci(number - 1) + fibonacci(last_total - 1);
+}

@@ -1,0 +1,77 @@
+/**
+ * Michael Lovell
+ * bigint.cpp
+ * cs23001
+ */
+#include <iostream>
+#include "bigint.hpp"
+
+bigint::bigint(){
+  for (int i = 0; i < size; ++i)
+    bigint_array[i] = 0;
+}
+
+bigint::bigint(int number_entered) {
+  for (int i = 0; i < size; ++i)
+    bigint_array[i] = 0;
+
+  int array_var = 0; // loop var to assign 0th element with ones place digit
+  int ten = 10; // variable used to from ones place to tens to hundreds ect.
+  int final_digit = -1; // while loop proceeds till this value changes with las\
+  t digit
+    while (final_digit < 0){
+      if (number_entered < ten){
+	final_digit = number_entered;
+	bigint_array[array_var] = number_entered;
+      }
+      else // number_entered is more than 2 digits
+	{
+	  bigint_array[array_var] = (number_entered % ten);
+	  number_entered = (number_entered / ten);
+	  ++array_var; // decrement to assign next element
+	}
+    }
+}
+
+bigint::bigint(const char char_array[]) {
+  for (int i = 0; i < size; ++i)
+    bigint_array[i] = 0;
+
+  int i = 0;
+  int number_from_char = 0;
+  int ten = 10; // variable used to from ones place to tens to hundreds ect.
+  while ((char_array[i] == '0') || (char_array[i] == '1') || (char_array[i] == '2') || (char_array[i] == '3') || (char_array[i] == '4') || (char_array[i] == '5') || (char_array[i] == '6') || (char_array[i] == '7') || (char_array[i] == '8') || (char_array[i] == '9'))
+    {
+      number_from_char = (char_array[i] - '0') + number_from_char;
+      number_from_char = number_from_char * ten;
+      ++i;
+    }
+  number_from_char = number_from_char / ten;
+  int array_var = 0; // loop var to assign 50th element with ones place digit
+  int final_digit = -1; // while loop proceeds till this value changes with last digit
+  while (final_digit < 0){
+    if (number_from_char < ten){
+      final_digit = number_from_char;
+      bigint_array[array_var] = number_from_char;
+    }
+    else // number_entered is more than 2 digits
+      {
+	bigint_array[array_var] = (number_from_char % ten);
+	number_from_char = (number_from_char / ten);
+	++array_var; // decrement to assign next element
+      }
+  }
+}
+
+bool bigint::operator==(const bigint& right_bigint)const{
+  for (int i = 0; i < size; ++i)
+    if (!(bigint_array[i] == right_bigint.bigint_array[i]))
+      return  false;
+  return true;
+}
+
+std::ostream& operator<<(std::ostream& out, const bigint ob1){
+  for (int i = 0; i < 50; ++i)
+    out << ob1.bigint_array[i] << " ";
+  return out;
+}

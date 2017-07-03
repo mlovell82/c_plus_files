@@ -1,0 +1,50 @@
+#include <iostream>
+#include "stack.hpp"
+#include"string/string.hpp"
+#include <vector>
+#include <fstream>
+
+int main(){
+
+  std::ifstream file("data3-1.txt");
+  if(!file.is_open()){
+    std::cout << "Unable to open file";
+  }
+  String test_string[5];
+  test_string[0] = "AXBC*+";
+  test_string[1] = "AXBCY*+DE-/";
+  test_string[2] = "AB+CE+*";
+  test_string[3] = "AXBXCYAY+BY+CX***";
+  test_string[4] = "HABC+D*+F*G*E**J+";
+  String temp;
+  String op;
+  String rhs;
+  stack<String> infix;
+  int i = 1;
+  while(!file.eof()){
+    String result;
+    file >> temp;
+    if ((temp != "(") && (temp != ")") && (temp != ";"))
+      infix.push(temp);
+    if(temp == ")"){
+      rhs = infix.getTos();
+      infix.pop();
+      op = infix.getTos();
+      infix.pop();
+      result = infix.getTos();
+      result = result + rhs;
+      result = result + op;
+      infix.pop();
+      infix.push(result);
+
+    }
+    if (temp == ";"){
+      String test;
+      test =  infix.getTos();
+      if (test == test_string[i - 1])
+	std::cout << "Test " << i << " passed" << std::endl;
+      ++i;
+  }
+
+}
+}

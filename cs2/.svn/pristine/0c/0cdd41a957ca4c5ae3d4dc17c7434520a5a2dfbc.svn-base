@@ -1,0 +1,42 @@
+/**
+ * Michael Lovell
+ * bigint.cpp
+ * cs23001
+ */
+#include "bigint.hpp"
+
+bigint::bigint(){
+  for (int i = 0; i < size; ++i)
+    bigint_array[i] = 0;
+}
+
+bigint::bigint(int number_entered){
+  int array_var = 49; // loop var to assign 50th element with ones place digit
+  int ten = 10; // variable used to from ones place to tens to hundreds ect.
+  int final_digit = -1; // while loop proceeds till this value changes with last digit
+  while (final_digit < 0){
+    if (number_entered < ten){
+      final_digit = number_entered;
+      bigint_array[array_var] = number_entered;
+    else // number_entered is more than 2 digits
+      {
+	bigint_array[array_var] = (number_entered % ten);
+	number_entered = number_entered / ten);
+      --array_var; // decrement to assign next element
+      }
+  }
+  // this while loop to assign the remaining elements with zeros
+  --array_var;
+  while (array_var >= 0){
+    bigint_array[array_var] = 0;
+    --array_var;
+  }
+}
+bigint::bigint(char[] char_array){
+
+}
+
+void output(std::ostream &out, bigint sample){
+  for(int i = 0; i < size; ++i)
+    cout << bigint_array[i] << " ";
+}

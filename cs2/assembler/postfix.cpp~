@@ -1,0 +1,61 @@
+#include<iostream>
+#include"stack.hpp"
+#include"string/string.hpp"
+#include<fstream>
+#include<vector>
+
+// Postfix function
+// Requires:  an output stream, input stream, and a stack object
+// Ensures:  infix from input is converted to a postfix expresson and sent to output stream
+void postfix(std::ostream&, std::istream&, stack<String>&);
+
+int main(int argc, char *argv[]){
+
+  // 2 output options( to the console or to a file)
+  std::vector<String> opt(2);
+  opt[0] = "cout";
+  opt[1] = "file";
+
+  std::ofstream out;  
+  std::ifstream file("data3-1.txt");
+  if(!file.is_open()){
+    std::cout << "Unable to open file";
+  }
+
+ stack<String> infix;  
+
+ String option(argv[1]);
+ if(option == opt[0])
+     postfix(std::cout, file, infix);
+   
+  file.close();
+}
+ 
+   void postfix(std::ostream& output, std::istream& file, stack<String>& infix){
+  
+  String temp;
+  String op;
+  String rhs;
+  while(!file.eof()){
+    String result;
+    file >> temp;
+    if ((temp != "(") && (temp != ")") && (temp != ";"))
+      infix.push(temp);
+    if(temp == ")"){
+      rhs = infix.getTos();
+      infix.pop();
+      op = infix.getTos();
+      infix.pop();
+      result = infix.getTos();
+      result = result + rhs;
+      result = result + op;
+      infix.pop();
+      infix.push(result);
+
+    }
+    if (temp == ";")
+      output << infix.getTos() << std::endl;
+  }
+   
+    
+}
